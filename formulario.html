@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="form.css" />
+    <script src="jquery-3.7.1.min.js"></script>
+    <title>Formulario</title>
+  </head>
+  <body>
+    <d id="formulario">
+
+        <div id="mensajeErrorCampos">
+    
+        </div>
+        
+        <h1>Formulario desde JQuery</h1>
+        <div class="elemento-formulario">
+            <label for="user">usuario</label>
+            <input type="text" id="user" placeholder="ingrese usuario"/>
+        </div>
+        <div class="elemento-formulario">
+            <label for="email">email</label>
+            <input type="email" id="email" placeholder="correo@correo.com"/>
+        </div>
+        <div class="elemento-formulario">
+            <label for="tel">telefono</label>
+            <input type="tel" id="tel" placeholder="55 5555 5555"/>
+        </div>
+        <div class="elemento-formulario">
+            <label for="pass">password</label>
+            <input type="password" id="pass" placeholder="********"/>
+        </div>
+        <div class="elemento-formulario">
+            <label for="passConf">Confirmar Contraseña</label>
+            <input type="password" id="passConf" placeholder="********"/>
+        </div>
+        <div class="elemento-formulario">
+            <input type="submit" id="enviar" value="Registrate"/>
+        </div>
+
+    </section>
+
+<script type="text/javascript">
+  function validarCorreo(correo) {
+      // Expresión regular para validar el formato de correo electrónico
+      var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      // Comprobar si el correo cumple con el formato
+      if (regexCorreo.test(correo)) {
+          return true; // El correo es válido
+      } else {
+          return false; // El correo es inválido
+      }
+    }
+$("#enviar").click(function(){
+    var campoVacio =""
+    var mensajeError=""
+    //validar los campos vacios
+    if($("#user").val()==""){
+        campoVacio="campoVacio" + "user <br>"
+    }
+
+//validar los campos vacios
+if(validarCorreo($("#email").val())=="false"){
+        mensajeError = mensajeError + "El formato del correo no es valido"
+    }
+    if($("#email").val()==""){
+        campoVacio="campoVacio" + "email <br>"
+    }
+    if($("#tel").val()==""){
+        campoVacio="campoVacio" + "telefono <br>"
+    }
+    
+    if($.isNumeric($("#tel").val()=="false")){
+        campoVacio="telefono incorrecto"
+    }
+
+    if($("#pass").val()==""){
+        campoVacio="campoVacio" + "password <br>"
+    }
+
+    if($("#passConf").val()==""){
+        campoVacio="campoVacio" + "passwordConf <br>"
+    }
+
+    if($("#passConf").val()!=$("#passConf").val()){
+        campoVacio="campoVacio" + "Las contraseñas no coinciden"
+    }
+
+    if(campoVacio!=""){
+        mensajeError = "<p> Los siguientes campos estan vacios</p>" + campoVacio + mensajeError;
+
+    }
+    if(mensajeError!=""){
+        $("#mensajeExito").html(mensajeError)
+    }else{
+        $("#mensajeExito").html("Registro exitoso")
+    }
+
+});
+</script>
+
+  </body>
+</html>

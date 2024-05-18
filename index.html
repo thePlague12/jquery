@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trabajando con JQuery</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="circulo"></div>
+    <div class="cuadrado"></div>
+    <div class="cuadrado"></div>
+
+    <script type="text/javascript">
+      $("#circulo").click(function () {
+        $(this).animate(
+          {
+            width: "350px",
+            heigth: "350px",
+            marginLeft: "100px",
+            marginTop: "100px",
+          },
+          2000,
+          function () {
+            $(this).css("backgroud-color", "red");
+          }
+        );
+      });
+    </script>
+
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et non
+      reiciendis cumque obcaecati dolorem quae nemo assumenda rerum fugiat
+      pariatur sed esse, vero quod odio minima quos ratione quidem debitis.
+    </p>
+    <button id="fadeOut">Ocultar texto</button>
+    <button id="fadeIn">Mostrar texto</button>
+    <script type="text/javascript">
+      $("#fadeOut").click(function () {
+        $("p").fadeOut("slow");
+      });
+      $("#fadeIn").click(function () {
+        $("p").fadeIn("slow");
+      });
+    </script>
+
+    <p id="text">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum sit error
+      quas, molestias nisi alias obcaecati dicta ex reprehenderit autem numquam
+      necessitatibus repudiandae omnis, optio atque, pariatur quia iste ut.
+    </p>
+
+    <button id="fadeOutIn">Clic Aqui</button>
+    <script type="text/javascript">
+      $("#fadeOutIn").click(function () {
+        if ($("#texto").css("display") == "none") {
+          $("#texto").fadeIn("slow");
+        } else {
+          $("#texto").fadeOut("slow");
+        }
+      });
+    </script>
+  </body>
+</html>
